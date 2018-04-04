@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Test_que2.Models.Customer>
+
+@{
+    ViewBag.Title = "Customer";
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <title>Index</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Customers Data</h2>
+        <a class="btn btn-primary pull-right" href="Home/create">Add Customers</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Email</td>
+                        <td>@Html.ActionLink("Edit", "Edit", new { id = item.Id })| @Html.ActionLink("Full Details", "Details", new { id = item.Id }) |@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { onclick = "return confirm('Are sure wants to delete?');" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-link pull-right"   new { onclick = "return confirm('Email Send Successfully');" }>Send Email to all</a>
+    </div>
+
+</body>
+</html>
